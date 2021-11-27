@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{%block body%}
+<body class="bg-dark">
+  <div class="container pt-2">
+    <div class="jumbotron p-0 py-1">
+      <h1 align="center">Live Streaming</h1>
+    </div>
+    <center><img src="{{ url_for('video') }}" width="50%"/><br>
+      <a class="btn btn-danger mt-2" href="{{ url_for('result') }}">Close Camera</a></center>
+
+  </div>
+</body>
+{%endblock%}
+<!-- <button><a href="{{ url_for('result') }}">Close Camera</a></button> -->
