@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{%block body%}
+<body class="bg-dark">
+    <div class="container p-0 d-flex justify-content-center align-items-center" style="height:50vh;">
+        <a href="{{ url_for('videopage') }}" class="btn btn-primary btn-lg px-5">Open Camera</a>
+    </div>
+    <div style="padding-left: 30; margin: auto;width: 50%; border: 3px solid green;padding: 10px;">
+      <h1 style="color: white;">Upload image for recognition</h1>
+      <form method="post" action="{{ url_for('pred_result') }}" enctype=multipart/form-data>
+      <center>
+          <input type=file name=file accept="image/*">
+          <input type=submit value=Upload>
+      </center>  
+      </form>
+    </div>
+  </body>
+{%endblock%}
