@@ -74,7 +74,7 @@ def result_data():
         face_cascade = cv2.CascadeClassifier('./model/haarcascade_frontalface_default.xml')
         gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
         box,detections = face_cascade.detectMultiScale2(gray,minNeighbors=8)
-        if len(detections)>0 and detections[0]>=80:
+        if len(detections)>0 and detections[0]>=60:
             for x,y,w,h in box:
                 face = img[y-50:y + h+20, x-30:x + w+30]
                 cv2.resize(face,(200,200),interpolation=cv2.INTER_AREA)
