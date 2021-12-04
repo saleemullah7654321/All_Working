@@ -1,17 +1,21 @@
-import re
-from flask import Flask,render_template,Response,request
+from flask import Flask,render_template,Response,request,url_for,redirect
 import cv2
-import json
 import os
-
-import flask
-from flask.helpers import url_for
-from werkzeug.utils import redirect
 import main
 import face_recognition_file
 
 app=Flask(__name__)
 app.config['UPLOAD_PATH'] = './static/testing_images'
+
+# create required directories
+def mk_dir(dir):
+    if not os.path.exists(dir):
+       os.makedirs(dir)
+
+mk_dir('static/images')
+mk_dir('static/testing_images')
+mk_dir('static/text')
+mk_dir('videos')
 
 
 camera=cv2.VideoCapture()
@@ -63,8 +67,6 @@ def result():
 def pred_result():
     if request.method == 'POST':
         uploaded_file = request.files['file']
-        print(uploaded_file.filename)
-
     if uploaded_file.filename != '':
         img=os.path.join(app.config['UPLOAD_PATH'], uploaded_file.filename)
         uploaded_file.save(img)

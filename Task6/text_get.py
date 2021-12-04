@@ -27,10 +27,10 @@ def get_data(data:list):
         Gender='M'
     #id_number
     if list(filter(lambda x: x.count('-')==2, data)):
-        Id_Number=list(filter(lambda x: '-' in x, data))[0]
+        Id_Number=list(filter(lambda x:x.count('-')==2, data))[0]
     #dates
     if len(list(filter(lambda x: x.count('.')==2, data)))==3:
-        D_O_Birth,D_O_Issue,D_O_Expiry=list(filter(lambda x: '.' in x, data))
+        D_O_Birth,D_O_Issue,D_O_Expiry=list(filter(lambda x: x.count('.')==2, data))
     #assign data
     data_dic={
         'Name':Name,

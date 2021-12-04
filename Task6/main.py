@@ -41,7 +41,7 @@ def result_data():
                 data_dic=get_data_dic(im)
                 for keys in keys_to_find:
                     f[keys]=data_dic[keys]
-                    # print(keys,f[keys])
+                    print(keys,f[keys])
                 file=json.dumps(f,indent=4)
                 with open('./static/text/temp.json','w') as fi:
                     fi.write(file)
@@ -70,19 +70,17 @@ def result_data():
 
     def __face_detection(img):
         if temp_img:
-            return img
+            return None
         face_cascade = cv2.CascadeClassifier('./model/haarcascade_frontalface_default.xml')
         gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
         box,detections = face_cascade.detectMultiScale2(gray,minNeighbors=8)
-        if len(detections)>0 and detections[0]>=60:
+        if len(detections)>0 and detections[0]>=40:
             for x,y,w,h in box:
                 face = img[y-50:y + h+20, x-30:x + w+30]
                 cv2.resize(face,(200,200),interpolation=cv2.INTER_AREA)
             temp_img.append(face)
-            return face
         else:
             print(detections)
-            return img
    
     if os.path.exists('./static/text/temp.json'):
             os.remove('./static/text/temp.json')
