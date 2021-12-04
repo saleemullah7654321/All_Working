@@ -17,5 +17,3 @@ def face_recognization(path):
                 data_to_return[1]=data
             break
     return data_to_return
-
-# face_recognization('testing_images/1.jpg')
